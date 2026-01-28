@@ -178,6 +178,11 @@ yesBtn.addEventListener("click", () => {
     });
 
     document.body.appendChild(film);
+    const footerMsg = document.createElement("div");
+    footerMsg.id = "valentine-footer";
+    footerMsg.textContent = "see you February 15th ;))";
+    document.body.appendChild(footerMsg);
+
 
   }, 500); // matches shine duration
 });
