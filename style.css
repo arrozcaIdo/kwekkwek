@@ -1,4 +1,4 @@
-/* Base page */
+
 body {
   background: #000;
   height: 100vh;
@@ -7,29 +7,6 @@ body {
   font-family: system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
 }
 
-/* Quick links */
-.quick-link {
-  position: fixed;
-  right: 10px;
-  width: 35px;
-  height: 35px;
-  z-index: 999;
-  background: #696969;
-  border-radius: 50%;
-  text-align: center;
-  color: #ddd;
-  text-decoration: none;
-  line-height: 35px;
-  font-size: 13px;
-  user-select: none;
-}
-
-.quick-link:nth-of-type(1) { top: 4%; }
-.quick-link:nth-of-type(2) { top: 10%; }
-.quick-link:nth-of-type(3) { top: 16%; }
-.quick-link:nth-of-type(4) { top: 22%; }
-
-/* Love words */
 #ui .love {
   position: absolute;
   top: 50%;
@@ -57,7 +34,6 @@ body {
   animation-delay: calc(var(--i) * -300ms);
 }
 
-/* Animations */
 @keyframes horizontal {
   from { transform: translateX(0px); }
   to   { transform: translateX(450px); }
@@ -87,11 +63,10 @@ body {
   100% { transform: translateY(180px); }
 }
 
-/* Fade-in wrapper for the whole animation */
 #ui {
   position: absolute;
   top: 50%;
-  left: 47%; /* moved slightly left from 50% */
+  left: 47%;
   transform: translate(-50%, -50%);
   opacity: 0;
   animation: fadeIn 2s ease forwards;
@@ -103,23 +78,21 @@ body {
   to { opacity: 1; }
 }
 
-/* Valentine text below the heart (centered vertically) */
 #valentine-text {
   position: absolute;
-  top: 50%; /* vertically centered */
+  top: 50%; 
   left: 50%;
   transform: translate(-50%, -50%);
   font-family: 'Courier New', Courier, monospace;
-  font-size: 3rem; /* bigger text */
+  font-size: 3rem; 
   color: #fff;
   text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #ff5fa2;
   white-space: nowrap;
   pointer-events: none;
   z-index: 100;
-  opacity: 1; /* visible for typewriter effect */
+  opacity: 1;
 }
 
-/* Buttons for Yes / No */
 .valentine-btn {
   font-family: 'Courier New', Courier, monospace;
   font-size: 2rem;
@@ -129,7 +102,18 @@ body {
   cursor: pointer;
   margin: 0 20px;
   text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #ff5fa2;
-  transition: transform 0.2s ease, text-shadow 0.3s ease;
+  transition: transform 0.2s ease, text-shadow 0.3s ease, color 0.2s ease;
+}
+
+#yes-btn:hover {
+  color: #fff;
+  font-weight: bold;
+  text-shadow:
+    0 0 15px #ff5fa2,
+    0 0 30px #ff5fa2,
+    0 0 45px #ff5fa2,
+    0 0 60px #ff5fa2;
+  transform: scale(1.2);
 }
 
 .valentine-btn:hover {
@@ -137,15 +121,96 @@ body {
   text-shadow: 0 0 15px #fff, 0 0 30px #fff, 0 0 45px #ff5fa2;
 }
 
-/* Container for buttons */
 #valentine-btns {
   position: absolute;
-  top: calc(50% + 100px); /* slightly below the text */
+  top: calc(50% + 100px); 
   left: 50%;
   transform: translateX(-50%);
   display: flex;
   justify-content: center;
-  opacity: 0; /* fade in later */
+  opacity: 0; 
   transition: opacity 1s ease;
   z-index: 100;
+}
+
+.bounce {
+  animation: bounce 0.3s ease forwards;
+}
+
+@keyframes bounce {
+  0%   { transform: scale(1); }
+  50%  { transform: scale(1.5); }
+  100% { transform: scale(1); }
+}
+
+.shine {
+  animation: shine 0.5s ease forwards;
+}
+
+@keyframes shine {
+  0% { text-shadow: 0 0 10px #ff5fa2, 0 0 20px #ff5fa2; }
+  50% { text-shadow: 0 0 20px #ff5fa2, 0 0 40px #ff5fa2, 0 0 60px #ff5fa2; }
+  100% { text-shadow: 0 0 10px #ff5fa2, 0 0 20px #ff5fa2; }
+}
+
+#valentine-logo {
+  position: absolute;
+  top: 20%;
+  left: 50%;
+  transform: translateX(-50%);
+  max-width: 250px;
+  z-index: 100;
+}
+
+#valentine-message {
+  position: absolute;
+  top: 60%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 3rem;
+  font-style: italic;
+  font-family: 'Courier New', Courier, monospace;
+  color: #fff;
+  text-shadow: 0 0 10px #fff, 0 0 20px #ff5fa2, 0 0 30px #ff5fa2;
+  z-index: 100;
+  text-align: center;
+}
+
+#film-strip {
+  position: absolute;
+  bottom: 10%;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 25px;
+  z-index: 100;
+}
+
+#film-strip img {
+  width: 250px;
+  height: 180px;
+  object-fit: cover;
+  border-radius: 10px;
+  box-shadow: 0 0 20px #ff5fa2;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+#film-strip img:hover {
+  transform: scale(1.1) rotateZ(-2deg);
+  box-shadow: 0 0 30px #ff5fa2, 0 0 60px #ff5fa2, 0 0 90px #ff5fa2;
+}
+
+.star {
+  position: absolute;
+  width: 2px;
+  height: 2px;
+  background: #ff5fa2;
+  border-radius: 50%;
+  opacity: 0;
+  animation: twinkle 2s infinite;
+}
+
+@keyframes twinkle {
+  0%, 100% { opacity: 0; transform: scale(0.5); }
+  50% { opacity: 1; transform: scale(1.2); }
 }
