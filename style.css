@@ -118,3 +118,34 @@ body {
   z-index: 100;
   opacity: 1; /* visible for typewriter effect */
 }
+
+/* Buttons for Yes / No */
+.valentine-btn {
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 2rem;
+  color: #fff;
+  background: none; /* no box */
+  border: none;
+  cursor: pointer;
+  margin: 0 20px;
+  text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #ff5fa2;
+  transition: transform 0.2s ease, text-shadow 0.3s ease;
+}
+
+.valentine-btn:hover {
+  transform: scale(1.2);
+  text-shadow: 0 0 15px #fff, 0 0 30px #fff, 0 0 45px #ff5fa2;
+}
+
+/* Container for buttons */
+#valentine-btns {
+  position: absolute;
+  top: calc(50% + 100px); /* slightly below the text */
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  justify-content: center;
+  opacity: 0; /* fade in later */
+  transition: opacity 1s ease;
+  z-index: 100;
+}
