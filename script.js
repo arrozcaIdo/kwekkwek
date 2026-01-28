@@ -21,3 +21,27 @@ for (let i = 1; i <= N; i++) {
   love.appendChild(h);
   ui.appendChild(love);
 }
+
+// Typewriter effect for Valentine text
+setTimeout(() => {
+  const text = document.createElement("div");
+  text.id = "valentine-text";
+  document.body.appendChild(text);
+
+  const message = "Will you be my valentine?";
+  let i = 0;
+
+  // Blur hearts immediately when typing starts
+  const ui = document.getElementById("ui");
+  ui.style.filter = "blur(3px) brightness(0.6)";
+
+  function typeWriter() {
+    if (i < message.length) {
+      text.textContent += message[i];
+      i++;
+      setTimeout(typeWriter, 120); // typing speed
+    }
+  }
+
+  typeWriter();
+}, 2100); // after hearts fade-in
