@@ -179,11 +179,11 @@ yesBtn.addEventListener("click", () => {
 
     document.body.appendChild(film);
     
-// Footer message under images
 const footer = document.createElement("div");
 footer.id = "valentine-footer";
 footer.textContent = "See you February 15th ;))";
-document.body.appendChild(footer);
+
+film.parentNode.insertBefore(footer, film.nextSibling);
 
   }, 500); // matches shine duration
 });
