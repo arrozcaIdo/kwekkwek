@@ -42,14 +42,17 @@ setTimeout(() => {
       // Create Yes/No buttons
       const btnContainer = document.createElement("div");
       btnContainer.id = "valentine-btns";
+      btnContainer.style.display = "flex";
+      btnContainer.style.justifyContent = "center";
+      btnContainer.style.alignItems = "center";
 
       const yesBtn = document.createElement("button");
       yesBtn.className = "valentine-btn";
-      yesBtn.textContent = "Yes!";
+      yesBtn.textContent = "Yes";
 
       const noBtn = document.createElement("button");
       noBtn.className = "valentine-btn";
-      noBtn.textContent = "no";
+      noBtn.textContent = "No";
 
       btnContainer.appendChild(yesBtn);
       btnContainer.appendChild(noBtn);
@@ -62,21 +65,64 @@ setTimeout(() => {
 
       // Yes button click
       let yesSize = 3; // starting font size in rem
-      yesBtn.addEventListener("click", () => alert("hehehehhee i love you baby"));
+      yesBtn.addEventListener("click", () => alert("hehehehehe i love you baby"));
 
-      // No button swaps places with Yes on hover
+      // No button hover count
+      let hoverCount = 0;
+      const messages = ["luh", "???", "di mo na ba ak mahal", "baby naman", "ihhhh", "🙁"];
+
+      function showMessage(msg) {
+        const msgDiv = document.createElement("div");
+        msgDiv.textContent = msg;
+        msgDiv.style.position = "absolute";
+        msgDiv.style.top = "40%";
+        msgDiv.style.left = "50%";
+        msgDiv.style.transform = "translateX(-50%)";
+        msgDiv.style.fontFamily = "'Courier New', Courier, monospace";
+        msgDiv.style.fontSize = "2rem";
+        msgDiv.style.color = "#fff";
+        msgDiv.style.textShadow = "0 0 10px #fff, 0 0 20px #ff5fa2";
+        msgDiv.style.opacity = 1;
+        msgDiv.style.zIndex = 101;
+        document.body.appendChild(msgDiv);
+
+        setTimeout(() => {
+          msgDiv.style.transition = "opacity 0.8s ease";
+          msgDiv.style.opacity = 0;
+        }, 1000);
+
+        setTimeout(() => document.body.removeChild(msgDiv), 1800);
+      }
+
+      // No button swaps with Yes on hover
       noBtn.addEventListener("mouseenter", () => {
-        // Swap text content (optional) or just positions
-        const yesPos = yesBtn.style.order || "0";
-        const noPos = noBtn.style.order || "1";
+        hoverCount++;
 
-        // Swap their order in flexbox container
-        yesBtn.style.order = noPos;
-        noBtn.style.order = yesPos;
+        // After 10 hovers, remove No button and enlarge Yes button
+        if (hoverCount > 15) {
+          noBtn.style.display = "none";
+          yesBtn.style.fontSize = "6rem"; // take up most of the space
+          yesBtn.style.width = "80%";
+          yesBtn.style.transition = "all 0.5s ease";
+          yesBtn.style.textAlign = "center";
+          return;
+        }
 
-        // Grow Yes a little
+        // Swap flex order
+        const yesOrder = yesBtn.style.order || "0";
+        const noOrder = noBtn.style.order || "1";
+        yesBtn.style.order = noOrder;
+        noBtn.style.order = yesOrder;
+
+        // Grow Yes button a little
         yesSize += 0.3;
         yesBtn.style.fontSize = yesSize + "rem";
+
+        // Show random message if hoverCount is odd
+        if (hoverCount % 2 === 1) {
+          const randomMsg = messages[Math.floor(Math.random() * messages.length)];
+          showMessage(randomMsg);
+        }
       });
     }
   }
