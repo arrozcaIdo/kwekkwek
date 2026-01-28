@@ -175,6 +175,7 @@ body {
   text-shadow: 0 0 10px #fff, 0 0 20px #ff5fa2, 0 0 30px #ff5fa2;
   z-index: 100;
   text-align: center;
+  white-space: nowrap; /* prevents text from breaking to a new line */
   font-size: clamp(1.5rem, 5vw, 3rem);
 }
 
