@@ -237,3 +237,16 @@ body {
   }
 }
 
+#valentine-footer {
+  position: absolute;
+  bottom: 5%; /* just below the images */
+  left: 50%;
+  transform: translateX(-50%);
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 1.5rem;
+  color: #fff;
+  text-shadow: 0 0 5px #ff5fa2, 0 0 10px #ff5fa2;
+  text-align: center;
+  z-index: 100;
+}
+
